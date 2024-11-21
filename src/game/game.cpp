@@ -28,6 +28,14 @@ namespace game
         P1.circle.setOutlineColor(sf::Color::Black);
         P1.speed = 0.00015f;
 
+        player::Player P2;
+        P2.circle.setRadius(15.0f);
+        P2.circle.setFillColor(sf::Color::Blue);
+        P2.circle.setPosition(300, 400);
+        P2.circle.setOutlineThickness(1.f);
+        P2.circle.setOutlineColor(sf::Color::Black);
+        P2.speed = 0.00015f;
+
         ball::Ball ball;
         ball.circle.setRadius(10.0f);
         ball.circle.setFillColor(sf::Color::White);
@@ -60,10 +68,31 @@ namespace game
             {
                 P1.dir.x = 1.0f;
             }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+                P2.dir.y = -1.0f;
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            {
+                P2.dir.y = 1.0f;
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                P2.dir.x = -1.0f;
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                P2.dir.x = 1.0f;
+            }
+
             player::move(P1, deltaTime);
+            player::move(P2, deltaTime);
             ball::updateBallPosition(ball, P1);
+            ball::updateBallPosition(ball, P2);
             window.clear(sf::Color::White);
             window.draw(P1.circle);
+            window.draw(P2.circle);
             window.draw(ball.circle);
             window.display();
         }
