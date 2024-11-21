@@ -5,15 +5,24 @@
     <ClCompile Include="..\src\game\game.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\objects\player.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="game">
       <UniqueIdentifier>{8fb75b58-3d16-4c35-9da2-77c4d8d6e211}</UniqueIdentifier>
     </Filter>
+    <Filter Include="objects">
+      <UniqueIdentifier>{3fa77f18-b763-4dd7-9e24-49f32b90f691}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\game.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\player.h">
+      <Filter>objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
