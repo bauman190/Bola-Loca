@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "objects/player.h"
+#include "objects/ball.h"
 
 #include <iostream>
 
@@ -25,7 +26,15 @@ namespace game
         P1.circle.setPosition(600, 300);
         P1.circle.setOutlineThickness(1.f);
         P1.circle.setOutlineColor(sf::Color::Black);
-        P1.speed = 0.0002f;
+        P1.speed = 0.00015f;
+
+        ball::Ball ball;
+        ball.circle.setRadius(10.0f);
+        ball.circle.setFillColor(sf::Color::White);
+        ball.circle.setPosition(500, 200);
+        ball.circle.setOutlineThickness(1.f);
+        ball.circle.setOutlineColor(sf::Color::Black);
+
 
         while (window.isOpen()) {
             sf::Event event;
@@ -34,7 +43,7 @@ namespace game
                     window.close();
             }
             deltaTime = clock.restart().asMicroseconds();
-            //std::cout << "Delta Time: " << deltaTime << " segundos" << std::endl;
+           
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
                 player::moveUP(P1,deltaTime);
@@ -51,8 +60,11 @@ namespace game
             {
                 player::moveRight(P1, deltaTime);
             }
+
+            ball::updateBallPosition(ball, P1);
             window.clear(sf::Color::White);
             window.draw(P1.circle);
+            window.draw(ball.circle);
             window.display();
         }
 
