@@ -8,10 +8,8 @@ struct Player
 {
 	sf::CircleShape circle;
 	float speed;
+	sf::Vector2f dir;
 };
 
-void moveUP(Player& player, float DT);
-void moveDown(Player& player, float DT);
-void moveLeft(Player& player, float DT);
-void moveRight(Player& player, float DT);
+void move(Player& player, float DT);
 }

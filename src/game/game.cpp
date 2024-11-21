@@ -46,21 +46,21 @@ namespace game
            
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
-                player::moveUP(P1,deltaTime);
+                P1.dir.y = -1.0f;
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
-                player::moveDown(P1, deltaTime);
+                P1.dir.y = 1.0f;
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
-                player::moveLeft(P1, deltaTime);
+                P1.dir.x = -1.0f;
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
-                player::moveRight(P1, deltaTime);
+                P1.dir.x = 1.0f;
             }
-
+            player::move(P1, deltaTime);
             ball::updateBallPosition(ball, P1);
             window.clear(sf::Color::White);
             window.draw(P1.circle);
