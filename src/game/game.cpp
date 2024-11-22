@@ -212,8 +212,6 @@ namespace game
         sf::Vector2f direction = player2.circle.getPosition() - player1.circle.getPosition();
         float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
         
-        if (magnitude == 0.f) return;
-   
         direction /= magnitude;
  
         float overlap = (player1.circle.getRadius() + player2.circle.getRadius()) - magnitude;
