@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\game\game.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\objects\ball.cpp" />
+    <ClCompile Include="src\objects\goal.cpp" />
+    <ClCompile Include="src\objects\player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\game\game.h" />
+    <ClInclude Include="src\objects\ball.h" />
+    <ClInclude Include="src\objects\goal.h" />
+    <ClInclude Include="src\objects\player.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -159,19 +172,6 @@ sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\game\game.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\objects\goal.cpp" />
-    <ClCompile Include="..\src\objects\player.cpp" />
-    <ClCompile Include="..\src\objects\ball.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\game\game.h" />
-    <ClInclude Include="..\src\objects\goal.h" />
-    <ClInclude Include="..\src\objects\ball.h" />
-    <ClInclude Include="..\src\objects\player.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
