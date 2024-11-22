@@ -62,7 +62,7 @@ namespace game
 
         P1.circle.setRadius(15.0f);
         P1.circle.setFillColor(sf::Color::Red);
-        P1.circle.setPosition(600, 300);
+        P1.circle.setPosition(30, 330);
         P1.circle.setOutlineThickness(1.f);
         P1.circle.setOutlineColor(sf::Color::Black);
         P1.speed = 0.00015f;
@@ -70,7 +70,7 @@ namespace game
 
         P2.circle.setRadius(15.0f);
         P2.circle.setFillColor(sf::Color::Blue);
-        P2.circle.setPosition(300, 400);
+        P2.circle.setPosition(1130, 330);
         P2.circle.setOutlineThickness(1.f);
         P2.circle.setOutlineColor(sf::Color::Black);
         P2.speed = 0.00015f;
@@ -78,7 +78,7 @@ namespace game
 
         ball.circle.setRadius(10.0f);
         ball.circle.setFillColor(sf::Color::White);
-        ball.circle.setPosition(500, 200);
+        ball.circle.setPosition(600, 320);
         ball.circle.setOutlineThickness(1.f);
         ball.circle.setOutlineColor(sf::Color::Black);
 
