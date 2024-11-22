@@ -11,6 +11,9 @@
     <ClCompile Include="..\src\objects\ball.cpp">
       <Filter>objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\objects\goal.cpp">
+      <Filter>objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="game">
@@ -28,6 +31,9 @@
       <Filter>objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\objects\ball.h">
+      <Filter>objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\objects\goal.h">
       <Filter>objects</Filter>
     </ClInclude>
   </ItemGroup>

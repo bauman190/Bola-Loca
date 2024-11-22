@@ -162,11 +162,13 @@ sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
   <ItemGroup>
     <ClCompile Include="..\src\game\game.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\objects\goal.cpp" />
     <ClCompile Include="..\src\objects\player.cpp" />
     <ClCompile Include="..\src\objects\ball.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\game.h" />
+    <ClInclude Include="..\src\objects\goal.h" />
     <ClInclude Include="..\src\objects\ball.h" />
     <ClInclude Include="..\src\objects\player.h" />
   </ItemGroup>

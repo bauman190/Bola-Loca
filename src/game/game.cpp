@@ -4,6 +4,7 @@
 
 #include "objects/player.h"
 #include "objects/ball.h"
+#include "objects/goal.h"
 
 #include <iostream>
 
@@ -13,6 +14,9 @@ namespace game
     static player::Player P1;
     static player::Player P2;
     static ball::Ball ball;
+    static goal::Goal goal1;
+    static goal::Goal goal2;
+
     static void input();
     static void update();
     static void init();
@@ -21,6 +25,7 @@ namespace game
     static void keepEntityInMap(sf::CircleShape& entity);
     static float calDis(sf::CircleShape c1, sf::CircleShape c2);
     static float deltaTime = 0.0f;
+
     void runGame()
     {
 
@@ -73,7 +78,17 @@ namespace game
         ball.circle.setOutlineThickness(1.f);
         ball.circle.setOutlineColor(sf::Color::Black);
 
+        goal1.goal.setSize({ 20, 100 });
+        goal1.goal.setPosition(20 - (goal1.goal.getSize().x / 2), 340 - goal1.goal.getSize().y);
+        goal1.goal.setFillColor(sf::Color::White);
+        goal1.goal.setOutlineColor(sf::Color::Black);
+        goal1.goal.setOutlineThickness(1.0f);
 
+        goal2.goal.setSize({ 20, 100 });
+        goal2.goal.setPosition(1180 - (goal2.goal.getSize().x / 2), 340 - goal2.goal.getSize().y);
+        goal2.goal.setFillColor(sf::Color::White);
+        goal2.goal.setOutlineColor(sf::Color::Black);
+        goal2.goal.setOutlineThickness(1.0f);
     }
 
     static void input()
@@ -150,6 +165,8 @@ namespace game
         window.draw(P1.circle);
         window.draw(P2.circle);
         window.draw(ball.circle);
+        window.draw(goal1.goal);
+        window.draw(goal2.goal);
 
 
     }
