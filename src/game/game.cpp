@@ -19,6 +19,7 @@ namespace game
     static void draw();
     static void resolvePlayerCollision(player::Player& player1, player::Player& player2);
     static void keepEntityInMap(sf::CircleShape& entity);
+    static float calDis(sf::CircleShape c1, sf::CircleShape c2);
     static float deltaTime = 0.0f;
     void runGame()
     {
@@ -77,14 +78,6 @@ namespace game
 
     static void input()
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            ball::kickBall(ball);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad0))
-        {
-            ball::kickBall(ball);
-        }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
@@ -120,6 +113,15 @@ namespace game
             P2.dir.x = 1.0f;
         }
 
+            if (calDis(P1.circle , ball.circle) <= P1.circle.getRadius() + ball.circle.getRadius()  + 10.f && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            {
+                ball::kickBall(ball, P1);
+            }
+            if (calDis(P2.circle, ball.circle) <= P2.circle.getRadius() + ball.circle.getRadius() + 10.f && sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad0))
+            {
+                ball::kickBall(ball, P2);
+            }
+
     }
 
     static void update()
@@ -133,7 +135,8 @@ namespace game
         }
         ball::updateBallPosition(ball, P1);
         ball::updateBallPosition(ball, P2);
-        ball::ballMovment(ball, P1, P2, deltaTime);
+        ball::ballMovment(ball, deltaTime);
+        ball::ballWall(ball);
         keepEntityInMap(P1.circle);
         keepEntityInMap(P2.circle);
         keepEntityInMap(ball.circle);
@@ -187,4 +190,12 @@ namespace game
             entity.setPosition(entity.getPosition().x, 600 - entity.getRadius());
         }
     }
+
+    static float calDis(sf::CircleShape c1, sf::CircleShape c2)
+    {
+        return sqrt(pow(c1.getPosition().x - c2.getPosition().x, 2) +
+            pow(c1.getPosition().y - c2.getPosition().y, 2));
+    }
+
+    
 }

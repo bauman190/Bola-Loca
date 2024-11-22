@@ -22,11 +22,7 @@ namespace ball
 			sf::Vector2f direction = ball.circle.getPosition() - player.circle.getPosition();
 			float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
-
-			if (magnitude != 0) {
-				direction /= magnitude;
-			}
-
+			direction /= magnitude;
 		 
 			float orbitDis = player.circle.getRadius() + ball.circle.getRadius();
 			ball.dir = player.circle.getPosition() + direction * orbitDis;
@@ -35,15 +31,32 @@ namespace ball
 
 	}
 
-	void kickBall(Ball& ball) 
+	void kickBall(Ball& ball, player::Player player) 
 	{
-		ball.speed = ball.dir * ball.kickForce;
+		sf::Vector2f direction = ball.circle.getPosition() - player.circle.getPosition();
+		float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+		direction /= magnitude;
+		ball.speed = direction * ball.kickForce;
 	}
 
-	void ballMovment(Ball& ball, player::Player P1, player::Player P2, float deltaTime) 
+	void ballMovment(Ball& ball, float deltaTime) 
 	{		
 			ball.circle.setPosition(ball.circle.getPosition() + ball.speed * deltaTime);
 
-			ball.speed *= 0.98f;		
+			ball.speed *= 0.98f;
 	}
+
+	void ballWall(Ball& ball)
+	{
+
+		if (ball.circle.getPosition().x - ball.circle.getRadius() <= -10 || 
+			ball.circle.getPosition().x + ball.circle.getRadius() >= 1200 ||
+			ball.circle.getPosition().y - ball.circle.getRadius() <= -10 ||
+			ball.circle.getPosition().y + ball.circle.getRadius() >= 600)
+		{
+			ball.speed *= -1.0f;
+		}
+
+	}
+
 }
