@@ -17,6 +17,10 @@ namespace game
     static goal::Goal goal1;
     static goal::Goal goal2;
 
+    static sf::Font font;
+    static int puntos1 = 0;
+    static int puntos2 = 0;
+
     static void input();
     static void update();
     static void init();
@@ -33,7 +37,7 @@ namespace game
 
         init();
 
-
+        font.loadFromFile("res/arial.ttf");
         while (window.isOpen()) {
             sf::Event event;
             while (window.pollEvent(event)) {
@@ -182,6 +186,29 @@ namespace game
         window.draw(ball.circle);
         window.draw(goal1.goal);
         window.draw(goal2.goal);
+
+        sf::Text text;
+        text.setFont(font); // font is a sf::Font
+
+        // set the string to display
+        text.setString(std::to_string(puntos1));
+
+        // set the character size
+        text.setCharacterSize(80); // in pixels, not points!
+
+        // set the color
+        text.setFillColor(sf::Color::Red);
+
+        text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+
+
+        text.setPosition(50, 50);
+
+            // inside the main loop, between window.clear() and window.display()
+            window.draw(text);
+
+
+    
 
 
     }
