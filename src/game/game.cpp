@@ -165,6 +165,7 @@ namespace game
             ball.circle.setPosition(600, 330);
             P1.circle.setPosition(30, 320);
             P2.circle.setPosition(1130, 320);
+            puntos2++;
         }
 
         if (goal::colitionBallGoal(ball, goal2))
@@ -172,6 +173,7 @@ namespace game
             ball.circle.setPosition(600, 320);
             P1.circle.setPosition(30, 320);
             P2.circle.setPosition(1130, 320);
+            puntos1++;
        
         }
 
@@ -188,25 +190,18 @@ namespace game
         window.draw(goal2.goal);
 
         sf::Text text;
-        text.setFont(font); // font is a sf::Font
-
-        // set the string to display
+        text.setFont(font);      
         text.setString(std::to_string(puntos1));
-
-        // set the character size
-        text.setCharacterSize(80); // in pixels, not points!
-
-        // set the color
+        text.setCharacterSize(40);
         text.setFillColor(sf::Color::Red);
-
-        text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-
-
+        text.setStyle(sf::Text::Bold);
         text.setPosition(50, 50);
+        window.draw(text);
 
-            // inside the main loop, between window.clear() and window.display()
-            window.draw(text);
-
+        text.setString(std::to_string(puntos2));
+        text.setFillColor(sf::Color::Blue);
+        text.setPosition(1100, 50);
+        window.draw(text);
 
     
 
