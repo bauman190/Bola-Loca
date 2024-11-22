@@ -77,6 +77,15 @@ namespace game
 
     static void input()
     {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            ball::kickBall(ball);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad0))
+        {
+            ball::kickBall(ball);
+        }
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             P1.dir.y = -1.0f;
@@ -124,6 +133,7 @@ namespace game
         }
         ball::updateBallPosition(ball, P1);
         ball::updateBallPosition(ball, P2);
+        ball::ballMovment(ball, P1, P2, deltaTime);
         keepEntityInMap(P1.circle);
         keepEntityInMap(P2.circle);
         keepEntityInMap(ball.circle);
