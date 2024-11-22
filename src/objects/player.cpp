@@ -17,8 +17,6 @@ namespace player
 			
 			float newX = player.circle.getPosition().x + player.dir.x;
 			float newY = player.circle.getPosition().y + player.dir.y;
-
-		
 			if (newX - player.circle.getRadius() > -10 &&
 				newX + player.circle.getRadius() < 1200) {
 				player.circle.setPosition(newX, player.circle.getPosition().y);

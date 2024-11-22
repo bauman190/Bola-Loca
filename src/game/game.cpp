@@ -9,7 +9,7 @@
 
 namespace game
 {
-    static sf::RenderWindow window(sf::VideoMode(1200, 600), "SFML");
+    static sf::RenderWindow window(sf::VideoMode(1200, 620), "SFML");
     static player::Player P1;
     static player::Player P2;
     static ball::Ball ball;
@@ -17,12 +17,14 @@ namespace game
     static void update();
     static void init();
     static void draw();
+    static void resolvePlayerCollision(player::Player& player1, player::Player& player2);
+    static void keepEntityInMap(sf::CircleShape& entity);
     static float deltaTime = 0.0f;
-	void runGame() 
-	{
+    void runGame()
+    {
 
         sf::Clock clock;
-        
+
         init();
 
 
@@ -33,17 +35,17 @@ namespace game
                     window.close();
             }
             deltaTime = clock.restart().asMicroseconds();
-           
+
             input();
-            
+
             update();
-            
+
             draw();
             window.display();
         }
 
 
-	}
+    }
 
     static void init()
     {
@@ -116,8 +118,15 @@ namespace game
 
         player::move(P1, deltaTime);
         player::move(P2, deltaTime);
+        if (ball::checkCollision(P1.circle, P2.circle))
+        {
+            resolvePlayerCollision(P1, P2);
+        }
         ball::updateBallPosition(ball, P1);
         ball::updateBallPosition(ball, P2);
+        keepEntityInMap(P1.circle);
+        keepEntityInMap(P2.circle);
+        keepEntityInMap(ball.circle);
 
     }
 
@@ -131,6 +140,41 @@ namespace game
 
 
     }
+    static void resolvePlayerCollision(player::Player& player1, player::Player& player2)
+    {
+        sf::Vector2f direction = player2.circle.getPosition() - player1.circle.getPosition();
+        float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+        
+        if (magnitude == 0.f) return;
+   
+        direction /= magnitude;
+ 
+        float overlap = (player1.circle.getRadius() + player2.circle.getRadius()) - magnitude;
 
+        player1.circle.setPosition(player1.circle.getPosition() - direction * (overlap / 2.f));
+        player2.circle.setPosition(player2.circle.getPosition() + direction * (overlap / 2.f));
+    }
 
+    static void keepEntityInMap(sf::CircleShape& entity)
+    {
+        if (entity.getPosition().x - entity.getRadius() < -10)
+        {
+            entity.setPosition(-10 + entity.getRadius(), entity.getPosition().y);
+        }
+
+        if (entity.getPosition().x + entity.getRadius() > 1200)
+        {
+            entity.setPosition(1200 - entity.getRadius(), entity.getPosition().y);
+        }
+
+        if (entity.getPosition().y - entity.getRadius() < -10)
+        {
+            entity.setPosition(entity.getPosition().x, -10 + entity.getRadius());
+        }
+
+        if (entity.getPosition().y + entity.getRadius() > 600)
+        {
+            entity.setPosition(entity.getPosition().x, 600 - entity.getRadius());
+        }
+    }
 }
