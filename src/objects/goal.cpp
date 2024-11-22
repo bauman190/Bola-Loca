@@ -2,7 +2,7 @@
 
 
 
-bool colitionBallGoal(ball::Ball ball, goal::Goal goal)
+bool goal::colitionBallGoal(ball::Ball ball, goal::Goal goal)
 {
 	float testX = ball.circle.getPosition().x;
 	float testY = ball.circle.getPosition().y;

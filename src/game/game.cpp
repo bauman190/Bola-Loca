@@ -156,6 +156,21 @@ namespace game
         keepEntityInMap(P2.circle);
         keepEntityInMap(ball.circle);
 
+        if (goal::colitionBallGoal(ball,goal1))
+        {
+            ball.circle.setPosition(600, 330);
+            P1.circle.setPosition(30, 320);
+            P2.circle.setPosition(1130, 320);
+        }
+
+        if (goal::colitionBallGoal(ball, goal2))
+        {
+            ball.circle.setPosition(600, 320);
+            P1.circle.setPosition(30, 320);
+            P2.circle.setPosition(1130, 320);
+       
+        }
+
     }
 
     static void draw()
